@@ -28,7 +28,6 @@ db.on('disconnected', () => console.log('mongo disconnected', mongoURI))
 
 io.on('connection', (socket)=>{
   socket.on('find-chat', async (users)=>{
-    console.log('yes')
       try{
           let chat = await Chat.findOne( { '$and':  [{'users': users[0]} ,{'users': users[1] }] })
           if (!chat){
